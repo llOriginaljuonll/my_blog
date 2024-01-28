@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Blog Form{% endblock %}
+
+{% block content %}
+<div class="container"> <br>
+    <p class="text-center display-4 fw-normal text-secondary">
+        <i>Let's start!</i>
+    </p>
+    <form action="{% url 'blog:blog-form' user.username %}" method="post" novalidate> <br>
+        {% csrf_token %}
+        <div>
+            {{ form|crispy }}
+        </div>
+        <div class="text-center">
+            <button class="btn btn-secondary">Submit</button>
+        </div>
+    </form> <br>
+</div>
+
+
+<script>
+    var name = "{{ user.pk }}";
+    document.getElementById('writer').value = name;
+</script>
+{% endblock %}
