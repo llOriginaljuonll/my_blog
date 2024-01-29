@@ -11,7 +11,10 @@
         <div class="container-fluid">
             {% for blog in blogs %}
             <div class="container-fluid col-6 justify-content-center border-bottom">
-                <div class="h2 fw-normal text-capitalize"><a href="#" class="link-no-underline">{{ blog.name }}</a></div>
+                <div class="h2 fw-normal text-capitalize">
+                    <a href="{% url 'blog:blog-detail' blog.pk %}" class="link-no-underline">
+                        {{ blog.name }}
+                    </a></div>
                 <p class="h6 text-secondary"><i>By {{ blog.writer }}</i></p>
                 <p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-week mb-1" viewBox="0 0 16 16">
