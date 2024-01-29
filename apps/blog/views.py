@@ -18,3 +18,10 @@ def blog_form(request, name):
     else:
         form = BlogForm()
         return render(request, 'blog_form.html', {'form': form})
+    
+def blog_detail(request, blog_id):
+
+    blog = Blog.objects.get(pk=blog_id)
+    
+    return render(request, 'blog_detail.html', {'blog': blog})
+
