@@ -12,13 +12,15 @@ class BlogForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(
                 attrs={
-                    'placeholder': 'Your blog name.',
-                    'type': 'text'
+                    'placeholder': 'BLOG NAME',
+                    'class': 'border-0 text-dark',
+                    'style': 'font-size: 3rem; font-weight: 500;',
                 }
             ),
             'body': forms.Textarea(
                 attrs={
-                    'placeholder': 'Write your blog content.',
+                    'placeholder': 'Write Your Story.',
+                    'class': 'border-0 fs-5 text-secondary',
                 }
             ),
             'writer': forms.TextInput(
@@ -28,4 +30,9 @@ class BlogForm(forms.ModelForm):
                     'type': 'hidden'
                 }
             )
+        }
+
+        labels = {
+            'name': '',
+            'body': '',
         }
