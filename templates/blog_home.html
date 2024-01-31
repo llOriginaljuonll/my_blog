@@ -11,7 +11,7 @@
         <div class="container-fluid">
             {% for blog in blogs %}
             <div class="container-fluid col-6 justify-content-center border-bottom">
-                <div class="h2 fw-normal text-capitalize">
+                <div class="h2 fw-normal">
                     <a href="{% url 'blog:blog-detail' blog.pk %}" class="link-no-underline">
                         {{ blog.name }}
                     </a></div>
