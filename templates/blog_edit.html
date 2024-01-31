@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{blog.name}}{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {% if user.id == blog.writer.id %}
+        <div class="container col-8">
+            <form action="" method="post" novalidate> <br>
+                {% csrf_token %}
+                <div>
+                    {{ form|crispy }}
+                </div>
+                <div class="text-center">
+                    <button class="border-0 border-dark bg-white text-primary">
+                        <p class="display-6 border-bottom border-primary fw-normal border-2">SUBMIT</p>
+                    </button>
+                </div>
+            </form> <br> 
+        </div>
+    {% endif %}
+{% endif %}
+
+<script>
+    var name = "{{ user.pk }}";
+    document.getElementById('writer').value = name;
+</script>
+{% endblock %}

@@ -26,3 +26,12 @@ def blog_detail(request, blog_id):
     
     return render(request, 'blog_detail.html', {'blog': blog})
 
+def blog_edit(request, blog_id):
+    blog = Blog.objects.get(pk=blog_id)
+    form = BlogForm(request.POST or None, instance=blog)
+
+    if form.is_valid():
+        form.save()
+        return redirect('/')
+    return render(request, 'blog_edit.html', {'form': form, 'blog': blog})
+
