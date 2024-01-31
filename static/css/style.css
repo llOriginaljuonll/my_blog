@@ -1,3 +1,7 @@
 .link-no-underline{
     text-decoration: none;
 }
+
+.bg-white{
+    background-color: #ffffff;
+}

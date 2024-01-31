@@ -9,7 +9,7 @@
     <p class="text-center display-4 fw-normal text-secondary">
         <i>Let's start!</i>
     </p>
-    <form action="{% url 'blog:blog-form' user.username %}" method="post" novalidate> <br>
+    <form action="{% url 'blog:blog-form' user.pk %}" method="POST" novalidate> <br>
         {% csrf_token %}
         <div>
             {{ form|crispy }}
