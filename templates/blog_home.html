@@ -5,16 +5,21 @@
 
 {% block content %}
     <div class="container-fluid"> <br>
-        <p class="text-center display-4 fw-normal text-secondary">
-           MY BLOG
-        </p>
+        <p class="fw-light h1 col-6 container text-end">
+            <span class="p-0 text-secondary italianno-font">
+                Blacksmith Mentality.
+            </span>
+        </p> <br>
         <div class="container-fluid">
             {% for blog in blogs %}
             <div class="container-fluid col-6 justify-content-center border-bottom">
-                <div class="h2 fw-normal">
-                    <a href="{% url 'blog:blog-detail' blog.pk %}" class="link-no-underline">
-                        {{ blog.name }}
-                    </a></div>
+                <div class="h3 fw-normal">
+                    <p>
+                        <a href="{% url 'blog:blog-detail' blog.pk %}" class="link-no-underline">
+                            {{ blog.name }}
+                        </p>
+                    </a>
+                </div>
                 <p class="h6 text-secondary"><i>By {{ blog.writer }}</i></p>
                 <p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-week mb-1" viewBox="0 0 16 16">

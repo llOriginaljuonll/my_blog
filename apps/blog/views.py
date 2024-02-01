@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Blog
 from .forms import BlogForm
+from django.contrib import messages
 
 def blog_home(request):
     blogs = Blog.objects.all()
@@ -34,4 +35,10 @@ def blog_edit(request, blog_id):
         form.save()
         return redirect('/')
     return render(request, 'blog_edit.html', {'form': form, 'blog': blog})
+
+def blog_delete(request, blog_id):
+    blog = Blog.objects.get(pk=blog_id)
+    blog.delete()
+    messages.success(request, 'Blog has been successfully deleted')
+    return redirect('/')
 

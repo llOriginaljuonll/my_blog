@@ -7,7 +7,7 @@
 {% block content %}
 <div class="container"> <br>
     <p class="text-center display-4 fw-normal text-secondary">
-        <i>Let's start!</i>
+        <span class="border-bottom border-secondary">Let's start!</span>
     </p>
     <form action="{% url 'blog:blog-form' user.pk %}" method="POST" novalidate> <br>
         {% csrf_token %}

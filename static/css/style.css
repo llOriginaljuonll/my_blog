@@ -1,7 +1,15 @@
-.link-no-underline{
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');.link-no-underline{
     text-decoration: none;
 }
 
 .bg-white{
     background-color: #ffffff;
+}
+
+.italianno-font{
+    font-family: 'Italianno', cursive;
+}
+::-webkit-input-placeholder{
+    color: #BEC3C6!important;
+    font-style: italic;
 }
