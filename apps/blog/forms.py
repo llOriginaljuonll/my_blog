@@ -12,7 +12,7 @@ class BlogForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(
                 attrs={
-                    'placeholder': 'BLOG NAME',
+                    'placeholder': 'Blog name!',
                     'class': 'border-0 text-dark',
                     'style': 'font-size: 3rem; font-weight: 500;',
                 }
