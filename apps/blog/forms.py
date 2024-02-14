@@ -12,15 +12,14 @@ class BlogForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(
                 attrs={
-                    'placeholder': 'Blog name!',
-                    'class': 'border-0 text-dark',
-                    'style': 'font-size: 3rem; font-weight: 500;',
+                    'placeholder': 'HEAD!',
+                    'class': 'text-dark focus:outline-none py-2 container mx-auto text-5xl font-medium',
                 }
             ),
             'body': forms.Textarea(
                 attrs={
-                    'placeholder': 'Write Your Story.',
-                    'class': 'border-0 fs-5 text-secondary',
+                    'placeholder': 'WRITE YOUR STORY . . . .',
+                    'class': 'border-0 container focus:outline-none text-xl',
                 }
             ),
             'writer': forms.TextInput(
