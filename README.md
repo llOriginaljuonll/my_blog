@@ -16,5 +16,17 @@ This project is using python langauge and django framework for the backend. djan
 	```
 	pip install -r requirements.txt
 	```
-4. Normally, if we install django, we will already have sqlite as default. But I recommend installing sqlite to be able to use sql command line, it will make us work more efficiently.
+4. Migrate to create db.
+	```
+	python manage.py migrate
+	```
+5. Create superuser
+	```
+	python manage.py createsuperuser
+	```
+6. Run server
+	```
+	python manage.py runserver
+	```
+7. Normally, if we install django, we will already have sqlite as default. But I recommend installing sqlite to be able to use sql command line, it will make us work more efficiently.
 Link for installing sqlite <https://www.sqlitetutorial.net/download-install-sqlite/>
