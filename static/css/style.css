@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');.link-no-underline{
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Poor+Story&display=swap');
+
+.link-no-underline{
     text-decoration: none;
 }
 
@@ -6,10 +9,15 @@
     background-color: #ffffff;
 }
 
+/* Fonts */
 .italianno-font{
     font-family: 'Italianno', cursive;
 }
+
+.poor-font{
+    font-family: 'Poor Story', system-ui;
+}
+
 ::-webkit-input-placeholder{
     color: #BEC3C6!important;
-    font-style: italic;
 }

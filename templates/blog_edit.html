@@ -7,15 +7,15 @@
 {% block content %}
 {% if user.is_authenticated %}
     {% if user.id == blog.writer.id %}
-        <div class="container col-8">
-            <form action="" method="post" novalidate> <br>
+        <div class="container mx-auto w-4/6">
+            <form method="post" novalidate> <br>
                 {% csrf_token %}
                 <div>
                     {{ form|crispy }}
                 </div>
                 <div class="text-center">
-                    <button class="border-0 border-dark bg-white text-primary">
-                        <p class="display-6 border-bottom border-primary fw-normal border-2">SUBMIT</p>
+                    <button class="tracking-widest">
+                        <p class="bg-slate-200 shadow-lg p-1 border-slate-950 font-bold text-2xl hover:text-white hover:bg-gray-900 rounded">EDIT</p>
                     </button>
                 </div>
             </form> <br> 

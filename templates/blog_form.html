@@ -3,22 +3,27 @@
 {% load crispy_forms_tags %}
 
 {% block title %}Blog Form{% endblock %}
+{% block head %}
+{% endblock %}
 
 {% block content %}
-<div class="container"> <br>
-    <p class="text-center display-4 fw-normal text-secondary">
-        <span class="border-bottom border-secondary">Let's start!</span>
+<div class="container mx-auto"> <br>
+    <p class="text-center text-3xl tracking-widest font-normal">
+        <span>Let's start your story.</span> <br>
+        <span>. . . . .</span>
     </p>
-    <form action="{% url 'blog:blog-form' user.pk %}" method="POST" novalidate> <br>
-        {% csrf_token %}
-        <div>
-            {{ form|crispy }}
-        </div>
-        <div class="text-center">
-            <button class="btn btn-secondary">Submit</button>
-        </div>
-    </form> <br>
 </div>
+<form class="w-4/6 mx-auto" action="{% url 'blog:blog-form' user.pk %}" method="POST" novalidate> <br>
+    {% csrf_token %}
+    <div>
+        {{ form|crispy }}
+    </div>
+    <div class="text-center">
+        <button class="tracking-widest">
+            <p class="bg-slate-200 shadow-lg p-1 border-slate-950 font-bold text-2xl hover:text-white hover:bg-gray-900 rounded">SUBMIT</p>
+        </button>
+    </div>
+</form> <br>
 
 
 <script>
