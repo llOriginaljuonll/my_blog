@@ -3,18 +3,22 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container col-4 h-100 justify-content-center align-items-center d-flex flex-column">
-    <form method="post" class="form-control border-0" novalidate>
+{% comment %} 
+    ตัว Login ได้ใช้ของ django เราไม่ได้สร้างฟังก์ชั่นไว้ที่  view ถ้าเรากำหนด action ใน <form> ข้อมูลจะไม่ถูกส่งออกไป
+    ให้ไปดูที่ settigns.py ตรง LOGIN_REDIRECT_URL แล้วจะเข้าใจ
+{% endcomment %}
+<div class="w-full max-w-xs mx-auto">
+    <form method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mt-20">
         {% csrf_token %}
-
         {{ form|crispy }}
-
-        <div class="d-flex justify-content-center">
-            <button class="btn border-0 btn-lg link-primary"><span class="border-bottom border-primary"><b>SIGN IN</b></span></button>
-        </div>
-    </form> <br><br><br>
-    <div class="text-center">
-        <p style="font-size: 15px; margin-top: 50px;">Don't have an account yet? <a href="{% url 'accounts:sign-up' %}" class="link-no-underline"><b>Click here</b></a> to sign up</p>
-    </div>
-</div> <hr>
+        <div class="flex items-center justify-between mt-5">
+            <button class="bg-gray-500 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Sign In
+            </button>
+            <a class="inline-block align-baseline font-bold text-sm text-gray-500 hover:text-gray-800" href="#">
+                Forgot Password?
+            </a>
+        </div
+    </form>
+</div>
 {% endblock %}

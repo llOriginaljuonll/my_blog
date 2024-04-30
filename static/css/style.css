@@ -21,3 +21,7 @@
 ::-webkit-input-placeholder{
     color: #BEC3C6!important;
 }
+
+.asteriskField {
+    display: none;
+}
