@@ -3,8 +3,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+{% comment %} 
+    ตัว Login ได้ใช้ของ django เราไม่ได้สร้างฟังก์ชั่นไว้ที่  view ถ้าเรากำหนด action ใน <form> ข้อมูลจะไม่ถูกส่งออกไป
+    ให้ไปดูที่ settigns.py ตรง LOGIN_REDIRECT_URL แล้วจะเข้าใจ
+{% endcomment %}
 <div class="w-full max-w-xs mx-auto">
-    <form method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mt-20" novalidate>
+    <form method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mt-20">
         {% csrf_token %}
         {{ form|crispy }}
         <div class="flex items-center justify-between mt-5">
