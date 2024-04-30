@@ -9,6 +9,8 @@ class SignupView(CreateView):
     success_url = reverse_lazy('blog:blog-home')
     template_name = 'registration/sign_up.html'
 
+    """ ยังไม่เข้าใจหลักการทำงาน เพียงแค่ก็อปโค้ดจาก stackoverflow  (T.T )!
+    """
     def form_valid(self, form):
         valid = super().form_valid(form)
         login(self.request, self.object)
