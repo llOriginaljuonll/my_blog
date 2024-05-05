@@ -7,6 +7,10 @@ class Blog(models.Model):
     body = models.TextField()
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
+    likes = models.ManyToManyField(User, related_name='Blog_like', blank=True)
+
+    def number_of_likes(self):
+        return self.likes.count()
 
     def __str__(self):
         return f'{self.name}'

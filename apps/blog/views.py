@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
-from .models import Blog
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BlogForm
 from django.contrib import messages
+
+from django.contrib.auth.models import User
+from .models import Blog
 
 def blog_home(request):
     blogs = Blog.objects.all()
@@ -24,7 +26,6 @@ def blog_form(request, user_id):
 def blog_detail(request, blog_id):
 
     blog = Blog.objects.get(pk=blog_id)
-    
     return render(request, 'blog_detail.html', {'blog': blog})
 
 def blog_edit(request, blog_id):
@@ -42,3 +43,15 @@ def blog_delete(request, blog_id):
     messages.success(request, 'Blog has been successfully deleted')
     return redirect('/')
 
+def blog_like(request, pk):
+    if request.user.is_authenticated:
+        blog = get_object_or_404(Blog, id=pk)
+        if blog.likes.filter(id=request.user.id):
+            blog.likes.remove(request.user)
+        else:
+            blog.likes.add(request.user)
+        return redirect(request.META.get('HTTP_REFERER'))
+
+    else:
+        return redirect('blog:blog-home')
+    
