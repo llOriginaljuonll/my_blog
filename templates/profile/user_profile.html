@@ -5,5 +5,33 @@
 
 
 {% block content %}
-    <h1 class="text-2xl font-bold">Test Profile</h1>
+    <div class="grid grid-cols-12 h-screen">
+        <div class="col-span-3 text-center pt-5 border-e border-stone-500">
+            <div class="flex flex-col justify-center items-center">
+                <img src="https://images.unsplash.com/flagged/photo-1552725391-4ae757a7ff8c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2hlc3MlMjBwbGF5ZXJ8ZW58MHx8MHx8fDA%3D" alt="women chess player" width="100" height="100" class="rounded-full">
+                <h1 class="text-xs mt-1 text-stone-500"><i>Don't worry about it, You're doing well.</i></h1>
+            </div>
+            <div class="px-5">
+                <div class="flex justify-between items-center mt-3 grid grid-cols-8">
+                    <span class="ml-10 text-blue-400 col-span-2">
+                        <i class="fa-solid fa-user fa-lg"></i><b> :</b>
+                    </span>
+                    <div class="text-lg text-stone-500 font-semibold text-start col-span-6">Chistopher Maria (Moly)</div>
+                </div>
+                <div class="flex justify-between items-center mt-3 grid grid-cols-8">
+                    <span class="ml-10 text-blue-400 col-span-2">
+                        <i class="fa-regular fa-calendar-days fa-lg text-blue-400 col-span-2"></i><b> :</b>
+                    </span>
+                    <div class="text-lg text-stone-500 font-semibold text-start    col-span-6">30 January 1989</div>
+                </div>
+                <div class="flex justify-between items-center mt-3 grid grid-cols-8">
+                    <span class="ml-10 text-blue-400 col-span-2">
+                        <i class="fa-solid fa-envelope fa-lg text-blue-400 col-span-2"></i><b> :</b>
+                    </span>
+                    <div class="text-lg text-stone-500 font-semibold text-start    col-span-6">oneforall@gmail.com</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-7  text-center">2</div>
+    </div>
 {% endblock content %}

@@ -11,7 +11,7 @@
         {% if user.is_authenticated %}
         <li class="">
             <span class="mr-2 border px-3 py-1 text-white bg-gray-950 rounded-full">
-                <a href="#" class="cursor-pointer text-lg">
+                <a href="{% url 'profile:user_profile' user.username %}" class="cursor-pointer text-lg">
                     {{ user.username }}
                 </a>
             </span>
