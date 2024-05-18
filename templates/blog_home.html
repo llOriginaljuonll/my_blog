@@ -25,7 +25,9 @@
                         </a>
                     </p>
                 </div>
-                <p class=" text-slate-600"><i>By {{ blog.writer }}</i></p>
+                <a href="{% url "profile:user_profile" blog.writer %}">
+                    <p class=" text-slate-600"><i>By {{ blog.writer }}</i></p>
+                </a>
                 <p class="flex justify-between items-center text-slate-600">
                     <span class="flex space-x-3 mb-2 items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-week" viewBox="0 0 16 16">
