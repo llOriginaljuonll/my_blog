@@ -1,13 +1,19 @@
 from django.db import models
-from autoslug import AutoSlugField
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from autoslug import AutoSlugField
+from versatileimagefield.fields import VersatileImageField
+
 class Profile(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    thumbnail = models.ImageField(null=True)
+    thumbnail = VersatileImageField(
+        'Image',
+        upload_to='images',
+        null=True
+    )
     slug = AutoSlugField(
         unique=True,
         max_length=100,

@@ -3,6 +3,9 @@ crispy-tailwind==1.0.3
 Django==5.0.1
 django-autoslug==1.9.9
 django-crispy-forms==2.1
+django-versatileimagefield==3.1
 pillow==10.3.0
+python-magic==0.4.27
+python-magic-bin==0.4.14
 sqlparse==0.4.4
 tzdata==2023.4
