@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # Third-party apps
     "crispy_forms",
     "crispy_tailwind",
+    "versatileimagefield",
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
@@ -135,6 +136,10 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+MEDIA_ROOT = str(BASE_DIR / "media")
+
+MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
