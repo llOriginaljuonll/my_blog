@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BlogForm
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 from django.contrib.auth.models import User
 from .models import Blog
@@ -55,3 +56,10 @@ def blog_like(request, pk):
     else:
         return redirect('blog:blog-home')
     
+def blog_bookmark_add(request, pk):
+    blog = get_object_or_404(Blog, id=pk)
+    if blog.bookmark.filter(pk=request.user.id).exists():
+        blog.bookmark.remove(request.user)
+    else:
+        blog.bookmark.add(request.user)
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
