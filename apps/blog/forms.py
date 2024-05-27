@@ -7,7 +7,7 @@ class BlogForm(forms.ModelForm):
 
         model = Blog
 
-        exclude = ('likes',)
+        exclude = ('likes', 'bookmark')
 
         widgets = {
             'name': forms.TextInput(
