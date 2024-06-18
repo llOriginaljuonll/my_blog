@@ -6,6 +6,8 @@
 
 {% block content %}
     <div class="grid grid-cols-12 h-screen">
+
+        {% comment %} Sidebar section {% endcomment %}
         <aside class="col-span-3 text-center pt-5 border-e border-stone-500">
             <div class="flex flex-col justify-center items-center">
                 <img src="{{ profile.thumbnail.crop.80x80 }}" alt="{{ profile.user }}" class="rounded-full">
@@ -17,7 +19,7 @@
                     <span class="ml-10 text-blue-400 col-span-2">
                         <i class="fa-solid fa-user fa-lg"></i><b> :</b>
                     </span>
-                    <div class="text-lg text-stone-500 font-semibold text-start col-span-6">Chistopher Maria (Moly)</div>
+                    <div class="text-lg text-stone-500 font-semibold text-start col-span-6">{{ profile.user.first_name|capfirst }} {{ profile.user.last_name|capfirst }}</div>
                 </div>
                 <div class="flex justify-between items-center mt-3 grid grid-cols-8">
                     <span class="ml-10 text-blue-400 col-span-2">
@@ -43,13 +45,15 @@
             </button>
         </aside>
         
+        
+        {% comment %} Library section {% endcomment %}
         <main class="col-span-9 p-5 text-center">
-            <h1 class="text-4xl font-medium border-b">Your library</h1>
+            <h1 class="text-4xl font-medium border-b">Your Library</h1>
             <div class="w-3/6 mx-auto">
-                {% for blog in blogs %}
+                {% for blog in bookmark %}
                 <div class="border-b border-rose-200">
                     <div class="text-3xl text-blue-400 mb-1">
-                        <p>
+                        <p> 
                             <a href="{% url 'blog:blog-detail' blog.pk %}" class="hover:text-blue-200">
                                 {{ blog.name }}
                             </a>
