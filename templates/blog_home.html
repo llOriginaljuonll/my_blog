@@ -39,17 +39,19 @@
 
                     <span class="flex gap-5">
                         {% comment %} Bookmark button {% endcomment %}
-                        <span>
-                            {% if user in blog.bookmark.all %}
-                                <a href="{% url "blog:blog-bookmark-add" blog.pk %}">
-                                    <i class="fa-solid fa-bookmark text-slate-600"></i>
-                                </a>
-                            {% else %}
-                                <a href="{% url "blog:blog-bookmark-add" blog.pk %}">
-                                    <i class="fa-regular fa-bookmark text-slate-600"></i>
-                                </a>
-                            {% endif %}
-                        </span>
+                        {% if user.is_authenticated %}
+                            <span>
+                                {% if user in blog.bookmark.all %}
+                                    <a href="{% url "blog:blog-bookmark-add" blog.pk %}">
+                                        <i class="fa-solid fa-bookmark text-slate-600"></i>
+                                    </a>
+                                {% else %}
+                                    <a href="{% url "blog:blog-bookmark-add" blog.pk %}">
+                                        <i class="fa-regular fa-bookmark text-slate-600"></i>
+                                    </a>
+                                {% endif %}
+                            </span>
+                        {% endif %}
     
                         {% comment %} Like button {% endcomment %}
                         <span>
