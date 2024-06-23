@@ -5,10 +5,10 @@
 
 
 {% block content %}
-    <div class="grid grid-cols-12 h-screen">
+    <div class="w-10/12 mx-auto grid grid-cols-12 h-screen">
 
         {% comment %} Sidebar section {% endcomment %}
-        <aside class="col-span-3 text-center pt-5 border-e border-stone-500">
+        <aside class="col-span-4 text-center pt-5 border-e border-stone-500">
             <div class="flex flex-col justify-center items-center">
                 <img src="{{ profile.thumbnail.crop.80x80 }}" alt="{{ profile.user }}" class="rounded-full">
                 <h1 class="text-xs mt-1 text-stone-500"><i>Don't worry about it, You're doing well.</i></h1>
@@ -47,10 +47,10 @@
         
         
         {% comment %} Library section {% endcomment %}
-        <main class="col-span-9 p-5 text-center">
-            <h1 class="text-4xl font-medium border-b">Your Library</h1>
-            <div class="w-3/6 mx-auto">
-                {% for blog in bookmark %}
+        <main class="col-span-8 p-5">
+            <h1 class="text-4xl font-medium text-center uppercase">Your Library</h1>
+            <div class="ms-5 mt-5">
+                {% for blog in blogs %}
                 <div class="border-b border-rose-200">
                     <div class="text-3xl text-blue-400 mb-1">
                         <p> 
@@ -70,18 +70,36 @@
                             </svg>
                             <i>Last Updated {{ blog.created|date:"j F Y" }}</i>
                         </span>
-                        <span>
-                            {% if user in blog.likes.all %}
-                                <a href="{% url "blog:blog-like" blog.pk %}">
-                                    <i class="fa-solid fa-thumbs-up text-slate-600"></i>
-                                </a>
-                                &nbsp;{{ blog.number_of_likes }}
-                            {% else %}
-                                <a href="{% url "blog:blog-like" blog.pk %}">
-                                    <i class="fa-regular fa-thumbs-up text-slate-600"></i>
-                                </a>
-                                &nbsp;{{ blog.number_of_likes }}
-                            {% endif %}
+                        <span class="flex space-x-4">
+                            <span>
+                                {% comment %} Bookmark button {% endcomment %}
+                                {% if user.is_authenticated %}
+                                    <span>
+                                        {% if user in blog.bookmark.all %}
+                                            <a href="{% url "blog:blog-bookmark-add" blog.pk %}">
+                                                <i class="fa-solid fa-bookmark text-slate-600"></i>
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url "blog:blog-bookmark-add" blog.pk %}">
+                                                <i class="fa-regular fa-bookmark text-slate-600"></i>
+                                            </a>
+                                        {% endif %}
+                                    </span>
+                                {% endif %}
+                            </span>
+                            <span>
+                                {% if user in blog.likes.all %}
+                                    <a href="{% url "blog:blog-like" blog.pk %}">
+                                        <i class="fa-solid fa-thumbs-up text-slate-600"></i>
+                                    </a>
+                                    &nbsp;{{ blog.number_of_likes }}
+                                {% else %}
+                                    <a href="{% url "blog:blog-like" blog.pk %}">
+                                        <i class="fa-regular fa-thumbs-up text-slate-600"></i>
+                                    </a>
+                                    &nbsp;{{ blog.number_of_likes }}
+                                {% endif %}
+                            </span>
                         </span>
                     </p> 
                 </div> <br>
