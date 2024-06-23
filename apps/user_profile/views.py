@@ -5,13 +5,12 @@ from .models import Profile
 from apps.blog.models import Blog
 from django.views.generic import DetailView, TemplateView
 
+   
+def profile_detail(request, slug):
+    
+    bookmark_list = Blog.objects.filter(bookmark=request.user)
+    print(bookmark_list)
+    user = Profile.objects.get(user__username=slug)
 
-
-class ProfileDetailView(DetailView):
-
-    model = Profile
-    template_name = 'profile/user_profile.html'
-
-    def get_queryset(self):
-        pass
-        return super().get_queryset()
+    return render(request, "profile/user_profile.html", {'profile': user, 'blogs': bookmark_list})
+    
