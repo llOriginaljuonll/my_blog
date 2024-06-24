@@ -5,8 +5,10 @@
 
 
 {% block content %}
-    <div class="grid grid-cols-12 h-screen">
-        <aside class="col-span-3 text-center pt-5 border-e border-stone-500">
+    <div class="w-10/12 mx-auto grid grid-cols-12 h-screen">
+
+        {% comment %} Sidebar section {% endcomment %}
+        <aside class="col-span-4 text-center pt-5 border-e border-stone-500">
             <div class="flex flex-col justify-center items-center">
                 <img src="{{ profile.thumbnail.crop.80x80 }}" alt="{{ profile.user }}" class="rounded-full">
                 <h1 class="text-xs mt-1 text-stone-500"><i>Don't worry about it, You're doing well.</i></h1>
@@ -17,7 +19,7 @@
                     <span class="ml-10 text-blue-400 col-span-2">
                         <i class="fa-solid fa-user fa-lg"></i><b> :</b>
                     </span>
-                    <div class="text-lg text-stone-500 font-semibold text-start col-span-6">Chistopher Maria (Moly)</div>
+                    <div class="text-lg text-stone-500 font-semibold text-start col-span-6">{{ profile.user.first_name|capfirst }} {{ profile.user.last_name|capfirst }}</div>
                 </div>
                 <div class="flex justify-between items-center mt-3 grid grid-cols-8">
                     <span class="ml-10 text-blue-400 col-span-2">
@@ -43,13 +45,15 @@
             </button>
         </aside>
         
-        <main class="col-span-9 p-5 text-center">
-            <h1 class="text-4xl font-medium border-b">Your library</h1>
-            <div class="w-3/6 mx-auto">
+        
+        {% comment %} Library section {% endcomment %}
+        <main class="col-span-8 p-5">
+            <h1 class="text-4xl font-medium text-center uppercase">Your Library</h1>
+            <div class="ms-5 mt-5">
                 {% for blog in blogs %}
                 <div class="border-b border-rose-200">
                     <div class="text-3xl text-blue-400 mb-1">
-                        <p>
+                        <p> 
                             <a href="{% url 'blog:blog-detail' blog.pk %}" class="hover:text-blue-200">
                                 {{ blog.name }}
                             </a>
@@ -66,18 +70,36 @@
                             </svg>
                             <i>Last Updated {{ blog.created|date:"j F Y" }}</i>
                         </span>
-                        <span>
-                            {% if user in blog.likes.all %}
-                                <a href="{% url "blog:blog-like" blog.pk %}">
-                                    <i class="fa-solid fa-thumbs-up text-slate-600"></i>
-                                </a>
-                                &nbsp;{{ blog.number_of_likes }}
-                            {% else %}
-                                <a href="{% url "blog:blog-like" blog.pk %}">
-                                    <i class="fa-regular fa-thumbs-up text-slate-600"></i>
-                                </a>
-                                &nbsp;{{ blog.number_of_likes }}
-                            {% endif %}
+                        <span class="flex space-x-4">
+                            <span>
+                                {% comment %} Bookmark button {% endcomment %}
+                                {% if user.is_authenticated %}
+                                    <span>
+                                        {% if user in blog.bookmark.all %}
+                                            <a href="{% url "blog:blog-bookmark-add" blog.pk %}">
+                                                <i class="fa-solid fa-bookmark text-slate-600"></i>
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url "blog:blog-bookmark-add" blog.pk %}">
+                                                <i class="fa-regular fa-bookmark text-slate-600"></i>
+                                            </a>
+                                        {% endif %}
+                                    </span>
+                                {% endif %}
+                            </span>
+                            <span>
+                                {% if user in blog.likes.all %}
+                                    <a href="{% url "blog:blog-like" blog.pk %}">
+                                        <i class="fa-solid fa-thumbs-up text-slate-600"></i>
+                                    </a>
+                                    &nbsp;{{ blog.number_of_likes }}
+                                {% else %}
+                                    <a href="{% url "blog:blog-like" blog.pk %}">
+                                        <i class="fa-regular fa-thumbs-up text-slate-600"></i>
+                                    </a>
+                                    &nbsp;{{ blog.number_of_likes }}
+                                {% endif %}
+                            </span>
                         </span>
                     </p> 
                 </div> <br>
