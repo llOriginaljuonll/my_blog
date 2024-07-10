@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ profile.slug }}{% endblock title %}
+
+<div class="flex">
+    {% block content %}
+        <div class="flex">
+            <div class="w-1/3">
+                {% include "profile/_sidebar__profile.html" %}
+            </div>
+            {% block inner %}{% endblock inner %}
+        </div>
+    {% endblock content %}
+</div>
