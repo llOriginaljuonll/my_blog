@@ -18,11 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from apps.user_profile.views import dashboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('apps.blog.urls', 'blog'), namespace='blog')),
     path('accounts/', include(('apps.accounts.urls', 'accounts'), namespace='accounts')),
+    path('dashboard/', dashboard, name="dashboard"),
     path('profile/', include(('apps.user_profile.urls', 'profile'),namespace='profile')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
