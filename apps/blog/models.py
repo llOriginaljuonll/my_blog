@@ -9,6 +9,7 @@ class Blog(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='Blog_like', blank=True)
     bookmark = models.ManyToManyField(User, related_name='bookmarked', default=None, blank=True)
+    views = models.IntegerField(default=0)
 
     def number_of_likes(self):
         return self.likes.count()

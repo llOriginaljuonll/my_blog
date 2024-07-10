@@ -27,6 +27,8 @@ def blog_form(request, user_id):
 def blog_detail(request, blog_id):
 
     blog = Blog.objects.get(pk=blog_id)
+    blog.views = blog.views + 1
+    blog.save()
     return render(request, 'blog_detail.html', {'blog': blog})
 
 def blog_edit(request, blog_id):
