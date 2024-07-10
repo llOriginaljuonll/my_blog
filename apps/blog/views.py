@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BlogForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-
-from django.contrib.auth.models import User
 from .models import Blog
 
 def blog_home(request):
@@ -27,6 +25,8 @@ def blog_form(request, user_id):
 def blog_detail(request, blog_id):
 
     blog = Blog.objects.get(pk=blog_id)
+    blog.views = blog.views + 1
+    blog.save()
     return render(request, 'blog_detail.html', {'blog': blog})
 
 def blog_edit(request, blog_id):

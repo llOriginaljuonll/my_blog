@@ -1,0 +1,29 @@
+<div class="px-4 py-6 sm:px-6 lg:px-8 w-full">
+  <div class="mx-auto">
+
+    <div>
+      <!-- เก็บโค้ดไว้เป็นไอเดียในการสร้าง responsive -->
+      <!--
+      <div class="sm:hidden">
+        <label for="tabs" class="sr-only">Select a tab</label>
+        <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
+          <option>My Account</option>
+          <option selected="">Team Members</option>
+      </select>
+    </div> -->
+      <div class="hidden sm:block">
+        <nav class="flex space-x-4 justify-center items-center" aria-label="Tabs">
+
+          <a href="{% url "profile:user-profile" request.user.username %}" class="{% if "/profile/" and request.user.username in request.path %}bg-gray-100{% endif %} hover:bg-gray-100 text-gray-700 px-3 py-2 py-1 font-semibold text-base rounded-md">
+             My Library
+          </a>
+          <a href="{% url "dashboard" %}" class="{% if '/dashboard/' == request.path %}bg-gray-100{% endif %} text-gray-500 hover:bg-gray-100 text-gray-700 px-3 py-2 font-medium text-base rounded-md">
+            Dashboard
+          </a>
+        </nav>
+      </div>
+    </div>
+
+  </div>
+</div>
+  

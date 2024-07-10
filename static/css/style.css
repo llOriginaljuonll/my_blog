@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Italianno&family=Poor+Story&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+  
 .link-no-underline{
     text-decoration: none;
 }
@@ -16,6 +17,10 @@
 
 .poor-font{
     font-family: 'Poor Story', system-ui;
+}
+
+.garamond-font{
+    font-family: "EB Garamond", serif;;
 }
 
 ::-webkit-input-placeholder{

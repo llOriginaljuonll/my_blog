@@ -7,12 +7,12 @@
             </span>
         </a>
     </div>
-    <ul class="flex mr-5 font-semibold">
+    <ul class="flex mr-5 font-medium">
         {% if user.is_authenticated %}
-        <li class="">
-            <span class="mr-2 border px-3 py-1 text-white bg-gray-950 rounded-full">
-                <a href="{% url 'profile:user_profile' user.username %}" class="cursor-pointer text-lg">
-                    {{ user.username }}
+        <li>
+            <span class="mr-2 border px-3 pb-1 pt-0.5 text-white bg-gray-950 rounded-full">
+                <a href="{% url 'profile:user-profile' user.username %}" class="cursor-pointer text-base">
+                    {{ request.user.username }}
                 </a>
             </span>
         </li>

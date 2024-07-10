@@ -1,0 +1,52 @@
+<aside class="text-center pt-5 bg-gray-50 h-screen">
+    
+    <div class="grid grid-cols-3">
+        <div></div>
+        <div class="flex flex-col justify-center items-center">
+            <img src="{{ profile.thumbnail.crop.80x80 }}" alt="{{ profile.user }}" class="rounded-full">
+        </div>
+        <i class="fa-solid fa-gears fa-lg text-end px-2.5"></i>
+    </div>
+    <div class="mt-5">
+        <div class="p-5 flex flex-col justify-end gap-4 w-5/6 mx-auto ms-12">
+            {% if profile.user.first_name or profile.user.last_name %}
+                <div class="flex items-center">
+                    <span class=" text-end">
+                        <i class="fa-solid fa-user fa-md"></i>
+                    </span>
+                    <div class="text-base font-semibold text-star mt-0.5 px-4">
+                        {% if profile.user.first_name %}
+                            {{ profile.user.last_name|capfirst|first }}. {{ profile.user.first_name|capfirst }}
+                        {% else %}
+                            {{ profile.user.last_name|capfirst }}
+                        {% endif %}
+                    </div>
+                </div>            
+            {% endif %}
+            {% if profile.birthdate %}
+                <div class="flex items-center">
+                    <div class=" text-end">
+                        <i class="fa-regular fa-solid fa-cake-candles fa-md"></i>
+                    </div>
+                    <div class="text-base font-semibold text-star mt-[1px] px-4">{{ profile.birthdate|date:"d F Y" }} &nbsp;[{{ profile.age }} year old]</div>
+                </div>
+            {% endif %}
+            {% if profile.user.email %}
+                <div class="flex items-center">
+                    <span class=" text-end">
+                        <i class="fa-solid fa-envelope fa-md"></i>
+                    </span>
+                    <div class="text-base font-semibold text-star mb-[3px] px-4">{{ profile.user.email }}</div>
+                </div>
+            {% endif %}
+            {% if profile.phone %}
+                <div class="flex items-center">
+                    <span class=" text-end">
+                        <i class="fa-solid fa-phone-volume fa-md "></i>
+                    </span>
+                    <div class="text-base font-semibold text-star mb-0.5 px-4 uppercase">{{ profile.phone }}</div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</aside>

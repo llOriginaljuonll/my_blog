@@ -1,0 +1,64 @@
+{% extends "profile/_base__profile.html" %}
+
+{% block inner %}
+    <div class="flex flex-col w-full">
+        <div class="mx-auto">
+            {% include "profile/_navbar__profile.html" %}
+        </div>
+
+        <!-- blogs section -->
+        <div class="w-5/6 mx-auto">
+            {% for blog in blogs %}
+                <div class="border-b px-2 pb-1">
+                    <div class="text-2xl text-blue-400 mb-1">
+                        <p>
+                            <a href="{% url 'blog:blog-detail' blog.pk %}" class="hover:text-blue-500 hover:underline">
+                                {{ blog.name }}
+                            </a>
+                        </p>
+                    </div>
+                    <p class="flex justify-between items-center mt-2">
+                        <span class="inline-flex justify-center items-center mb-2 text-[13px]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-week me-3" viewBox="0 0 16 16">
+                                <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                            </svg>
+                            <span class="flex text-sm items-center justify-center">Last Updated &nbsp;{{ blog.created|date:"j F Y" }}{{ forloop.counter }} </span>
+                        </span>
+
+
+                        <span class="flex gap-5">
+                            <span class="flex justify-center items-center cursor-default" data-tooltip-target="bookmarks-{{ forloop.counter }}">
+                                <i class="fa-regular fa-bookmark text-slate-600 me-1 mb-0.5"></i>
+                                &nbsp;{{ blog.number_of_bookmarks }}
+                            </span>
+                            <span class="flex justify-center items-center cursor-default" data-tooltip-target="likes-{{ forloop.counter }}">
+                                <i class="fa-regular fa-thumbs-up text-slate-600 me-0.5 mb-0.5"></i>
+                                &nbsp;{{ blog.number_of_likes }}
+                            </span>
+                            <span class="flex justify-center items-center cursor-default" data-tooltip-target="views-{{ forloop.counter }}">
+                                <i class="fa-regular fa-eye text-slate-600 me-1"></i>
+                                &nbsp;{{ blog.views }}
+                            </span>
+                        </span>
+                    </p> 
+                </div> <br>
+
+                <!-- text-over -->
+                <div id="bookmarks-{{ forloop.counter }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-1.5 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    amount of bookmarks
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <div id="likes-{{ forloop.counter }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-1.5 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    amount of likes
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <div id="views-{{ forloop.counter }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-1.5 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    amount of views
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock inner %}
