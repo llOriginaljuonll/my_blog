@@ -15,7 +15,7 @@ def profile_detail(request, slug):
     form = ProfileForm(request.POST or None, instance=instance)
     if form.is_valid():
           form.save()
-          return redirect('profile:user-profile')
+          return redirect('profile:user-profile', user.slug) # Must be separated by a comma.
 
     return render(request, "profile/user_profile.html", {'profile': user, 'blogs': bookmark_list, 'form': form})
 
@@ -28,6 +28,6 @@ def dashboard(request):
     form = ProfileForm(request.POST or None, instance=instance)
     if form.is_valid():
           form.save()
-          return redirect('profile:user-profile')
+          return redirect('profile:user-profile', user.slug)
 
     return render(request, "dashboard.html", {'blogs': blogs, 'profile': user, 'form': form})
